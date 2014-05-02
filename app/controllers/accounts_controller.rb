@@ -61,6 +61,16 @@ class AccountsController < ApplicationController
     end
   end
 
+  def import
+    Account.import(params[:file])
+    flash[:notice] = "Accounts imported."
+    redirect_to root_url, notice: "Accounts imported."
+  end
+
+  def download
+    send_file 'public/sample_import.csv'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account
