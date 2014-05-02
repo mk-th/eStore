@@ -1,0 +1,37 @@
+<%= form_for([@account, @journal]) do |f| %>
+  <% if @journal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this journal from being saved:</h2>
+
+      <ul>
+      <% @journal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :journal_date, 'Date' %><br>
+    <%= f.date_select :journal_date %>
+  </div>
+  <div class="field">
+    <%= f.label :account_id, 'Account' %><br>
+    <%= collection_select(:journal, :account_id, @accounts, :id, :account_name, {:prompt => true}) %>
+  </div>
+  <div class="field">
+    <%= f.label :journal_amount, 'Amount' %><br>
+    <%= f.number_field :journal_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :journal_entry_type, 'Jamaa ~ Khatay' %><br>
+    <%= f.select :journal_entry_type, [['Jamaa','Jamaa'],['Khatay','Khatay']] %>
+  </div>
+  <div class="field">
+    <%= f.label :journal_entry_description, 'Description' %><br>
+    <%= f.text_area :journal_entry_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

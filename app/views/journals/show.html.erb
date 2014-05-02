@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @journal.journal_date %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @journal.account.account_name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= number_to_currency(@journal.journal_amount, unit: "Rs: ") %>
+</p>
+
+<p>
+  <strong>Jamaa ~ Khatay:</strong>
+  <%= @journal.journal_entry_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @journal.journal_entry_description %>
+</p>
+
+<%= link_to 'Edit', edit_account_journal_path(@account, @journal) %> |
+<%= link_to 'Back', account_journals_path(@account) %>
