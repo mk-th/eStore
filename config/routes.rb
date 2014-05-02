@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   resources :accounts do
     resources :journals, :except => [:new, :create]
+    collection { post :import }
+    collection { get :download }
   end
 
   resources :journals, :only => [:new, :create]

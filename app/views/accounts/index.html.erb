@@ -31,3 +31,11 @@
 
 <%= link_to 'New Account', new_account_path %>
 <%= link_to 'New Journal Entry', new_journal_path %>
+
+<h2>Import Accounts</h2>
+
+<%= form_tag import_accounts_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+<%= link_to 'Sample Import File', download_accounts_path %>
