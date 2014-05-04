@@ -1,0 +1,12 @@
+#----------------------------------------------------------------------------
+# Ignore these files when commiting to a git repository
+#----------------------------------------------------------------------------
+
+# mac finder artifact
+.DS_Store
+
+# Others best ignored for heroku
+db/
+log/
+test/
+tmp/

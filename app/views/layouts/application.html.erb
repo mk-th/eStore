@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EStore</title>
+  <title>eStore --- WashDevs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if current_user %>
+	Logged In as <%= current_user.email %>
+	<%= link_to "Log Out", logout_path %>
+ <% else %>
+
+<% end %>
+
 
 <%= yield %>
 
