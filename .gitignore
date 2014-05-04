@@ -6,7 +6,7 @@
 .DS_Store
 
 # Others best ignored for heroku
-db/
+/db/*.sqlite3
 log/
 test/
 tmp/
