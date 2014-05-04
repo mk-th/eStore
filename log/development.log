@@ -20471,3 +20471,270 @@ Processing by JournalsController#new as HTML
   Rendered journals/new.html.erb within layouts/application (19.3ms)
   [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
 Completed 200 OK in 68ms (Views: 65.3ms | ActiveRecord: 0.7ms)
+  [1m[36m (344.9ms)[0m  [1mDROP DATABASE IF EXISTS "estore_development"[0m
+  [1m[35m (159.4ms)[0m  DROP DATABASE IF EXISTS "estore_test"
+  [1m[36m (764.8ms)[0m  [1mCREATE DATABASE "estore_development" ENCODING = 'unicode'[0m
+  [1m[35m (553.0ms)[0m  CREATE DATABASE "estore_test" ENCODING = 'unicode'
+  [1m[36mSQL (22.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (91.9ms)[0m  CREATE TABLE "accounts" ("id" serial primary key, "account_name" character varying(255), "account_number" bigint, "account_email" character varying(255), "account_details" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "journals" ("id" serial primary key, "journal_date" date, "account_id" integer, "journal_amount" integer, "journal_entry_type" character varying(255), "journal_entry_description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (26.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "password_digest" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.7ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (14.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140504160353')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140501165945')[0m
+  [1m[35m (14.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140501170508')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (29.8ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-05-04 23:10:34.519509"], ["email", "manishthorani@gmail.com"], ["name", "Manish"], ["password_digest", "$2a$10$cKHaxmbhyjHnWv.TZ4adw.PYpfxu12OHcgZECpD.qJAV.b5urogmi"], ["updated_at", "2014-05-04 23:10:34.519509"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-05 04:11:31 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (98.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAccount Load (325.6ms)[0m  [1mSELECT "accounts".* FROM "accounts"[0m
+  Rendered accounts/index.html.erb within layouts/application (574.2ms)
+Completed 200 OK in 4733ms (Views: 3274.3ms | ActiveRecord: 540.2ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:39 +0500
+
+
+Started GET "/assets/journals.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/journals.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:40 +0500
+
+
+Started GET "/logout" for 127.0.0.1 at 2014-05-05 04:11:44 +0500
+Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (8.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-05 04:11:44 +0500
+Processing by AccountsController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2014-05-05 04:11:44 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 53ms (Views: 51.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RihhNA01a4RIwiiqVjwK64kmwh6hspmGwkOCOYuu86c=", "email"=>"manish.thorani@live.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (85.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'manish.thorani@live.com' LIMIT 1[0m
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 204ms (Views: 14.2ms | ActiveRecord: 85.4ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/journals.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/journals.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:48 +0500
+
+
+Started POST "/sessions" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RihhNA01a4RIwiiqVjwK64kmwh6hspmGwkOCOYuu86c=", "email"=>"manish.thorani@live.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[35mUser Load (2.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'manish.thorani@live.com' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 18ms (Views: 13.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/journals.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2014-05-05 04:11:57 +0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:58 +0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:58 +0500
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:58 +0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:58 +0500
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:58 +0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:58 +0500
+
+
+Started GET "/assets/journals.js?body=1" for 127.0.0.1 at 2014-05-05 04:11:58 +0500
+
+
+Started POST "/sessions" for 127.0.0.1 at 2014-05-05 04:12:09 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RihhNA01a4RIwiiqVjwK64kmwh6hspmGwkOCOYuu86c=", "email"=>"manishthorani@gmail.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'manishthorani@gmail.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 144ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-05 04:12:09 +0500
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAccount Load (0.4ms)[0m  [1mSELECT "accounts".* FROM "accounts"[0m
+  Rendered accounts/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 61ms (Views: 58.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/journals.css?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/journals.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2014-05-05 04:12:10 +0500
+
+
+Started GET "/logout" for 127.0.0.1 at 2014-05-05 04:12:12 +0500
+Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-05 04:12:12 +0500
+Processing by AccountsController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2014-05-05 04:12:12 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 42ms (Views: 41.3ms | ActiveRecord: 0.0ms)
