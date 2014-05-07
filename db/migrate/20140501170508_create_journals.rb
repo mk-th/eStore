@@ -4,7 +4,6 @@ class CreateJournals < ActiveRecord::Migration
       t.date :journal_date
       t.integer :account_id
       t.integer :journal_amount
-      t.string :journal_entry_type
       t.text :journal_entry_description
 
       t.timestamps
