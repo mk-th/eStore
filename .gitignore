@@ -8,5 +8,4 @@
 # Others best ignored for heroku
 /db/*.sqlite3
 log/*
-test/
-tmp/
+tmp/*

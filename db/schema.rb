@@ -18,8 +18,11 @@ ActiveRecord::Schema.define(version: 20140504160353) do
 
   create_table "accounts", force: true do |t|
     t.string   "account_name"
-    t.integer  "account_number",  limit: 8
+    t.integer  "account_number",       limit: 8
     t.string   "account_email"
+    t.integer  "account_balance"
+    t.integer  "account_credit_count"
+    t.integer  "account_debit_count"
     t.text     "account_details"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,7 +32,6 @@ ActiveRecord::Schema.define(version: 20140504160353) do
     t.date     "journal_date"
     t.integer  "account_id"
     t.integer  "journal_amount"
-    t.string   "journal_entry_type"
     t.text     "journal_entry_description"
     t.datetime "created_at"
     t.datetime "updated_at"
